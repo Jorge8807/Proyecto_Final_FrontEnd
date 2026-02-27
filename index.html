@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Espacio Ideal Muebleria</title>
+  <link rel="icon" href="/mi_espacio_ideal_muebleria_favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#" class="logo" aria-label="Mi Espacio Ideal Muebleria">
+        <span class="logo-text">
+          <span class="logo-main">Mi Espacio Ideal</span>
+          <span class="logo-sub">Muebleria</span>
+        </span>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="logo-icon">
+          <path d="M3.5 10.4L12 3.8L20.5 10.4V19.2H14.9V13.8H9.1V19.2H3.5V10.4Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <nav class="menu">
+        <a href="#categories" class="is-active">Catalogos</a>
+        <a href="#featured">Muebles</a>
+        <a href="#about">Recamaras</a>
+        <a href="#contact">Ofertas</a>
+      </nav>
+      <div class="nav-actions">
+        <form class="search" role="search" action="#">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M16 16L20 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <input type="search" name="q" placeholder="Buscar productos..." aria-label="Buscar productos">
+        </form>
+        <a href="#contact" class="btn btn-primary nav-offer">Ver Ofertas</a>
+        <a href="#" class="btn cart-btn" aria-label="Carrito">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M2.8 4.5H5.2L7.1 12.1H17.7L19.6 6.8H7.3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="9.3" cy="18.4" r="1.5" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="16.2" cy="18.4" r="1.5" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+          <span class="cart-badge" aria-hidden="true">2</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">Coleccion 2026</p>
+          <h1>Muebles para transformar tu hogar con estilo y comodidad.</h1>
+          <p class="lead">
+            Descubre salas, recamaras y comedores pensados para tu dia a dia.
+            Diseño funcional, acabados premium y precios especiales por temporada.
+          </p>
+          <div class="hero-actions">
+            <a href="#featured" class="btn btn-primary">Comprar Ahora</a>
+            <a href="#about" class="btn btn-ghost">Conocer Mas</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h2>Oferta de la Semana</h2>
+          <p>Sala Modular Oslo</p>
+          <span>Desde $12,990</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="categories" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Compra por Categoria</h2>
+          <a href="#" class="text-link">Ver catalogo completo</a>
+        </div>
+        <div class="categories-grid">
+          <article class="tile">
+            <h3>Salas</h3>
+            <p>Sofas y seccionales para espacios modernos y familiares.</p>
+          </article>
+          <article class="tile">
+            <h3>Comedores</h3>
+            <p>Mesas y sillas para crear momentos inolvidables.</p>
+          </article>
+          <article class="tile">
+            <h3>Recamaras</h3>
+            <p>Bases, cabeceras y buros para tu descanso ideal.</p>
+          </article>
+          <article class="tile">
+            <h3>Oficina y Decoracion</h3>
+            <p>Escritorios, repisas y detalles para completar tu hogar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Productos Destacados</h2>
+          <a href="#" class="text-link">Ver todos</a>
+        </div>
+        <div class="products-grid">
+          <article class="product">
+            <div class="product-visual"></div>
+            <h3>Sofa Esquinero Niza</h3>
+            <p>Tela anti-manchas, 5 plazas</p>
+            <span>$15,490</span>
+          </article>
+          <article class="product">
+            <div class="product-visual"></div>
+            <h3>Comedor Aura 6 Sillas</h3>
+            <p>Madera solida con acabado nogal</p>
+            <span>$11,990</span>
+          </article>
+          <article class="product">
+            <div class="product-visual"></div>
+            <h3>Recamara Luna Queen</h3>
+            <p>Cabecera capitonada + 2 buros</p>
+            <span>$18,990</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container benefits-grid">
+        <article class="benefit">
+          <h3>Entrega Rapida</h3>
+          <p>En compras seleccionadas recibes en 48-72 horas.</p>
+        </article>
+        <article class="benefit">
+          <h3>Meses Sin Intereses</h3>
+          <p>Paga a 3, 6 o 12 MSI con tarjetas participantes.</p>
+        </article>
+        <article class="benefit">
+          <h3>Asesoria Personalizada</h3>
+          <p>Te ayudamos a elegir la mejor combinacion para tu espacio.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container section-head">
+        <h2>Inspira Tu Espacio</h2>
+        <a href="#" class="text-link">Ver ambientes</a>
+      </div>
+      <div class="container inspiration-grid">
+        <article class="inspiration-card">
+          <div class="inspiration-photo"></div>
+          <h3>Sala Contemporanea</h3>
+        </article>
+        <article class="inspiration-card">
+          <div class="inspiration-photo"></div>
+          <h3>Comedor Minimalista</h3>
+        </article>
+        <article class="inspiration-card">
+          <div class="inspiration-photo"></div>
+          <h3>Recamara Calida</h3>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section section-about">
+      <div class="container about-grid">
+        <h2>Mi Espacio Ideal: calidad, estilo y confianza para tu hogar.</h2>
+        <p>
+          Somos una muebleria enfocada en crear espacios funcionales y acogedores.
+          Seleccionamos piezas con diseño actual, materiales duraderos y excelente relación calidad-precio.
+          Te acompañamos desde la elección hasta la entrega.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="container footer-grid">
+      <p>Mi Espacio Ideal Muebleria</p>
+      <p>ventas@miespacioideal.com</p>
+      <p>Lun - Sab, 10:00 a 19:00</p>
+    </div>
+  </footer>
+</body>
+</html>
