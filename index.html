@@ -488,10 +488,12 @@
     </div>
     <div class="cart-drawer-footer">
       <p>Total de articulos: <strong data-cart-total>0</strong></p>
+      <p>Subtotal: <strong data-cart-subtotal>$0</strong></p>
       <a class="btn btn-primary cart-whatsapp-checkout" href="https://wa.me/525512345678?text=Hola,%20quiero%20informacion%20sobre%20mi%20carrito" target="_blank" rel="noreferrer">Finalizar por WhatsApp</a>
     </div>
   </aside>
   <div class="cart-overlay" data-cart-overlay hidden></div>
+  <div class="cart-toast" data-cart-toast role="status" aria-live="polite" aria-atomic="true"></div>
   <button type="button" class="scroll-top" aria-label="Volver arriba" data-scroll-top>
     <svg viewBox="0 0 52 52" aria-hidden="true">
       <circle class="scroll-top-track" cx="26" cy="26" r="22"></circle>
@@ -608,14 +610,17 @@
       var storageKey = "mi-espacio-ideal-cart";
       var countNode = document.querySelector("[data-cart-count]");
       var totalNode = document.querySelector("[data-cart-total]");
+      var subtotalNode = document.querySelector("[data-cart-subtotal]");
       var itemsNode = document.querySelector("[data-cart-items]");
       var drawer = document.querySelector("[data-cart-drawer]");
       var overlay = document.querySelector("[data-cart-overlay]");
+      var toast = document.querySelector("[data-cart-toast]");
       var openButton = document.querySelector("[data-cart-toggle]");
       var closeButton = document.querySelector("[data-cart-close]");
       var addButtons = Array.from(document.querySelectorAll("[data-add-to-cart]"));
+      var toastTimer;
 
-      if (!countNode || !totalNode || !itemsNode || !drawer || !overlay || !openButton) return;
+      if (!countNode || !totalNode || !subtotalNode || !itemsNode || !drawer || !overlay || !openButton || !toast) return;
 
       function getCart() {
         try {
@@ -642,9 +647,13 @@
         var totalItems = cart.reduce(function (sum, item) {
           return sum + item.quantity;
         }, 0);
+        var subtotal = cart.reduce(function (sum, item) {
+          return sum + (item.price * item.quantity);
+        }, 0);
 
         countNode.textContent = totalItems;
         totalNode.textContent = totalItems;
+        subtotalNode.textContent = formatPrice(subtotal);
 
         if (!cart.length) {
           itemsNode.innerHTML = '<p class="cart-empty">Tu carrito esta vacio.</p>';
@@ -654,9 +663,25 @@
         itemsNode.innerHTML = cart.map(function (item) {
           return '<div class="cart-item">' +
             '<div><h4>' + item.name + '</h4><p>' + formatPrice(item.price) + '</p></div>' +
-            '<span>x' + item.quantity + '</span>' +
+            '<div class="cart-item-meta">' +
+              '<div class="cart-item-quantity">' +
+                '<button type="button" class="cart-qty-btn" data-cart-action="decrease" data-cart-item="' + item.name + '" aria-label="Disminuir cantidad de ' + item.name + '">-</button>' +
+                '<span>' + item.quantity + '</span>' +
+                '<button type="button" class="cart-qty-btn" data-cart-action="increase" data-cart-item="' + item.name + '" aria-label="Aumentar cantidad de ' + item.name + '">+</button>' +
+              '</div>' +
+              '<button type="button" class="cart-item-remove" data-cart-action="remove" data-cart-item="' + item.name + '" aria-label="Eliminar ' + item.name + '">Eliminar</button>' +
+            '</div>' +
           '</div>';
         }).join("");
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("is-visible");
+        if (toastTimer) window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(function () {
+          toast.classList.remove("is-visible");
+        }, 2200);
       }
 
       function openCart() {
@@ -688,8 +713,51 @@
 
           saveCart(cart);
           renderCart();
+          showToast(name + " agregado al carrito");
           openCart();
         });
+      });
+
+      itemsNode.addEventListener("click", function (event) {
+        var actionButton = event.target.closest("[data-cart-action]");
+        var cart;
+        var name;
+        var action;
+        var item;
+
+        if (!actionButton) return;
+
+        cart = getCart();
+        name = actionButton.getAttribute("data-cart-item");
+        action = actionButton.getAttribute("data-cart-action");
+        item = cart.find(function (entry) {
+          return entry.name === name;
+        });
+
+        if (!item) return;
+
+        if (action === "increase") {
+          item.quantity += 1;
+          showToast(name + " agregado al carrito");
+        } else if (action === "decrease") {
+          item.quantity -= 1;
+          if (item.quantity <= 0) {
+            cart = cart.filter(function (entry) {
+              return entry.name !== name;
+            });
+            showToast(name + " eliminado del carrito");
+          } else {
+            showToast("Cantidad actualizada");
+          }
+        } else if (action === "remove") {
+          cart = cart.filter(function (entry) {
+            return entry.name !== name;
+          });
+          showToast(name + " eliminado del carrito");
+        }
+
+        saveCart(cart);
+        renderCart();
       });
 
       openButton.addEventListener("click", openCart);
