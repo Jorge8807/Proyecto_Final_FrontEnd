@@ -11,6 +11,12 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+  <div class="promo-bar">
+    <div class="container promo-bar-content">
+      <p>Hasta 12 MSI + asesoria personalizada por WhatsApp en productos seleccionados.</p>
+      <a href="#offers">Ver promociones</a>
+    </div>
+  </div>
   <header class="site-header">
     <div class="container nav">
       <a href="#" class="logo" aria-label="Mi Espacio Ideal Muebleria">
@@ -22,11 +28,16 @@
           <path d="M3.5 10.4L12 3.8L20.5 10.4V19.2H14.9V13.8H9.1V19.2H3.5V10.4Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <nav class="menu">
         <a href="#categories" class="is-active">Catalogos</a>
         <a href="#featured">Muebles</a>
         <a href="#about">Recamaras</a>
-        <a href="#contact">Ofertas</a>
+        <a href="#offers">Ofertas</a>
       </nav>
       <div class="nav-actions">
         <form class="search" role="search" action="#">
@@ -36,16 +47,23 @@
           </svg>
           <input type="search" name="q" placeholder="Buscar productos..." aria-label="Buscar productos">
         </form>
-        <a href="#contact" class="btn btn-primary nav-offer">Ver Ofertas</a>
-        <a href="#" class="btn cart-btn" aria-label="Carrito">
+        <a href="#offers" class="btn btn-primary nav-offer">Ver Ofertas</a>
+        <button type="button" class="btn cart-btn" aria-label="Carrito" data-cart-toggle>
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M2.8 4.5H5.2L7.1 12.1H17.7L19.6 6.8H7.3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
             <circle cx="9.3" cy="18.4" r="1.5" stroke="currentColor" stroke-width="1.6"/>
             <circle cx="16.2" cy="18.4" r="1.5" stroke="currentColor" stroke-width="1.6"/>
           </svg>
-          <span class="cart-badge" aria-hidden="true">2</span>
-        </a>
+          <span class="cart-badge" aria-hidden="true" data-cart-count>0</span>
+        </button>
       </div>
+    </div>
+    <div class="container mobile-menu-panel" id="mobile-menu">
+      <a href="#categories">Catalogos</a>
+      <a href="#featured">Muebles</a>
+      <a href="#about">Recamaras</a>
+      <a href="#offers">Ofertas</a>
+      <a href="#contact" class="mobile-menu-link">Contacto</a>
     </div>
   </header>
 
@@ -53,25 +71,52 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="kicker">Coleccion 2026</p>
-          <h1>Muebles para transformar tu hogar con estilo y comodidad.</h1>
+          <p class="kicker">Nueva Temporada</p>
+          <h1>
+            <span class="hero-title-desktop">Diseñamos ambientes que se sienten tuyos desde el primer vistazo.</span>
+            <span class="hero-title-mobile">Disenamos espacios que se sienten tuyos.</span>
+          </h1>
           <p class="lead">
-            Descubre salas, recamaras y comedores pensados para tu dia a dia.
-            Diseño funcional, acabados premium y precios especiales por temporada.
+            Descubre muebles contemporaneos para sala, recamara, cocina y decoracion.
+            Piezas seleccionadas para elevar tu hogar con calidez, orden y funcionalidad.
           </p>
           <div class="hero-actions">
-            <a href="#featured" class="btn btn-primary">Comprar Ahora</a>
-            <a href="#about" class="btn btn-ghost">Conocer Mas</a>
+            <a href="#featured" class="btn btn-primary">Explorar Coleccion</a>
+            <a href="#offers" class="btn btn-ghost">Ver Ofertas</a>
           </div>
         </div>
-        <div class="hero-card">
-          <div class="hero-media">
-            <img src="./assets/images/principal.jpg" alt="Imagen principal de sala moderna">
+        <div class="hero-showcase" data-hero-carousel>
+          <div class="hero-slides">
+            <article class="hero-slide is-active" data-slide data-category="Sala" data-title="Sala Modular Oslo" data-price="Desde $12,990">
+              <div class="hero-media">
+                <img src="./assets/images/principal.jpg" alt="Sala principal moderna">
+              </div>
+            </article>
+            <article class="hero-slide" data-slide data-category="Oficina" data-title="Set Home Office Niza" data-price="Desde $9,490">
+              <div class="hero-media">
+                <img src="./assets/images/producto1.jpg" alt="Recamara y home office minimalista">
+              </div>
+            </article>
+            <article class="hero-slide" data-slide data-category="Recamara" data-title="Recamara Luna Queen" data-price="Desde $18,990">
+              <div class="hero-media">
+                <img src="./assets/images/producto3.jpg" alt="Recamara calida en tonos neutros">
+              </div>
+            </article>
           </div>
-          <div class="hero-card-content">
-            <h2>Oferta de la Semana</h2>
-            <p>Sala Modular Oslo</p>
-            <span>Desde $12,990</span>
+          <div class="hero-card">
+            <h2 data-hero-category>Favorito de la Semana</h2>
+            <p data-hero-title>Sala Modular Oslo</p>
+            <span data-hero-price>Desde $12,990</span>
+            <small>Texturas suaves, tonos neutros y composicion modular adaptable.</small>
+          </div>
+          <div class="hero-controls">
+            <button type="button" class="hero-control" data-hero-prev aria-label="Slide anterior">‹</button>
+            <div class="hero-indicators" aria-label="Indicadores de hero">
+              <button type="button" class="hero-indicator is-active" data-hero-indicator="0" aria-label="Ir al slide 1"></button>
+              <button type="button" class="hero-indicator" data-hero-indicator="1" aria-label="Ir al slide 2"></button>
+              <button type="button" class="hero-indicator" data-hero-indicator="2" aria-label="Ir al slide 3"></button>
+            </div>
+            <button type="button" class="hero-control" data-hero-next aria-label="Siguiente slide">›</button>
           </div>
         </div>
       </div>
@@ -85,20 +130,19 @@
         </div>
         <div class="categories-grid">
           <article class="tile">
-            <h3>Salas</h3>
-            <p>Sofas y seccionales para espacios modernos y familiares.</p>
-          </article>
-          <article class="tile">
-            <h3>Comedores</h3>
-            <p>Mesas y sillas para crear momentos inolvidables.</p>
-          </article>
-          <article class="tile">
-            <h3>Recamaras</h3>
-            <p>Bases, cabeceras y buros para tu descanso ideal.</p>
-          </article>
-          <article class="tile">
+            <img class="tile-visual" src="./assets/images/categoria1.jpg" alt="Categoria de oficina y decoracion">
             <h3>Oficina y Decoracion</h3>
-            <p>Escritorios, repisas y detalles para completar tu hogar.</p>
+            <p>Escritorios, repisas y detalles para completar tu espacio.</p>
+          </article>
+          <article class="tile">
+            <img class="tile-visual" src="./assets/images/categoria2.jpg" alt="Categoria de hogar">
+            <h3>Hogar</h3>
+            <p>Muebles y accesorios funcionales para cada rincon de tu casa.</p>
+          </article>
+          <article class="tile">
+            <img class="tile-visual" src="./assets/images/categoria3.jpg" alt="Categoria de cocina">
+            <h3>Cocina</h3>
+            <p>Piezas practicas y organizacion pensada para tu dia a dia.</p>
           </article>
         </div>
       </div>
@@ -115,21 +159,81 @@
             <img class="product-visual" src="./assets/images/producto1.jpg" alt="Sofa esquinero Niza en sala moderna">
             <h3>Sofa Esquinero Niza</h3>
             <p>Tela anti-manchas, 5 plazas</p>
-            <span>$15,490</span>
+            <div class="product-footer">
+              <div class="product-pricing">
+                <span class="product-price">$19,360</span>
+              </div>
+              <button type="button" class="btn btn-outline product-cart-btn" data-add-to-cart data-product-name="Sofa Esquinero Niza" data-product-price="19360">Agregar al carrito</button>
+            </div>
           </article>
           <article class="product">
             <img class="product-visual" src="./assets/images/producto2.jpg" alt="Comedor Aura de seis sillas">
             <h3>Comedor Aura 6 Sillas</h3>
             <p>Madera solida con acabado nogal</p>
-            <span>$11,990</span>
+            <div class="product-footer">
+              <div class="product-pricing">
+                <span class="product-price">$14,100</span>
+              </div>
+              <button type="button" class="btn btn-outline product-cart-btn" data-add-to-cart data-product-name="Comedor Aura 6 Sillas" data-product-price="14100">Agregar al carrito</button>
+            </div>
           </article>
           <article class="product">
             <img class="product-visual" src="./assets/images/producto3.jpg" alt="Recamara Luna en tamaño queen">
             <h3>Recamara Luna Queen</h3>
             <p>Cabecera capitonada + 2 buros</p>
-            <span>$18,990</span>
+            <div class="product-footer">
+              <div class="product-pricing">
+                <span class="product-price">$23,160</span>
+              </div>
+              <button type="button" class="btn btn-outline product-cart-btn" data-add-to-cart data-product-name="Recamara Luna Queen" data-product-price="23160">Agregar al carrito</button>
+            </div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section id="offers" class="section">
+      <div class="container offers-banner">
+        <div>
+          <p class="kicker">Ofertas de Temporada</p>
+          <h2>Descuentos especiales en piezas seleccionadas para renovar tu hogar.</h2>
+        </div>
+        <p class="offers-note">Hasta 12 MSI, entrega rapida y promociones vigentes por tiempo limitado.</p>
+      </div>
+      <div class="container offers-grid">
+        <article class="offer-card">
+          <span class="offer-badge">-20%</span>
+          <img class="offer-visual" src="./assets/images/producto1.jpg" alt="Oferta en sofa esquinero Niza">
+          <h3>Sofa Esquinero Niza</h3>
+          <p>Ideal para sala principal con acabados faciles de limpiar.</p>
+          <span class="offer-old-price">$19,360</span>
+          <div class="offer-pricing">
+            <span class="offer-price">$15,490</span>
+          </div>
+          <button type="button" class="btn btn-primary offer-btn" data-add-to-cart data-product-name="Sofa Esquinero Niza Oferta" data-product-price="15490">Agregar al carrito</button>
+        </article>
+        <article class="offer-card">
+          <span class="offer-badge">-15%</span>
+          <img class="offer-visual" src="./assets/images/producto2.jpg" alt="Oferta en comedor Aura">
+          <h3>Comedor Aura 6 Sillas</h3>
+          <p>Una opcion funcional y elegante para reuniones familiares.</p>
+          <span class="offer-old-price">$14,100</span>
+          <div class="offer-pricing">
+            <span class="offer-price">$11,990</span>
+          </div>
+          <button type="button" class="btn btn-primary offer-btn" data-add-to-cart data-product-name="Comedor Aura 6 Sillas Oferta" data-product-price="11990">Agregar al carrito</button>
+        </article>
+        <article class="offer-card">
+          <span class="offer-badge">-18%</span>
+          <img class="offer-visual" src="./assets/images/producto3.jpg" alt="Oferta en recamara Luna Queen">
+          <h3>Recamara Luna Queen</h3>
+          <p>Set completo con presencia calida y materiales resistentes.</p>
+          <span class="offer-old-price">$23,160</span>
+          <div class="offer-pricing">
+            <span class="offer-price">$18,990</span>
+          </div>
+          <button type="button" class="btn btn-primary offer-btn" data-add-to-cart data-product-name="Recamara Luna Queen Oferta" data-product-price="18990">Agregar al carrito</button>
+        </article>
       </div>
     </section>
 
@@ -159,14 +263,35 @@
         <article class="inspiration-card">
           <img class="inspiration-photo" src="./assets/images/producto4.jpg" alt="Ambiente de sala contemporanea">
           <h3>Sala Contemporanea</h3>
+          <p>Sofa, mesa lateral y acentos decorativos en tonos neutros.</p>
+          <div class="product-footer">
+            <div class="product-pricing">
+              <span class="product-price">$14,990</span>
+            </div>
+            <button type="button" class="btn btn-outline product-cart-btn" data-add-to-cart data-product-name="Sala Contemporanea" data-product-price="14990">Agregar al carrito</button>
+          </div>
         </article>
         <article class="inspiration-card">
           <img class="inspiration-photo" src="./assets/images/producto5.jpg" alt="Ambiente de comedor minimalista">
           <h3>Comedor Minimalista</h3>
+          <p>Combinacion de mesa y sillas con lineas limpias y calidas.</p>
+          <div class="product-footer">
+            <div class="product-pricing">
+              <span class="product-price">$12,490</span>
+            </div>
+            <button type="button" class="btn btn-outline product-cart-btn" data-add-to-cart data-product-name="Comedor Minimalista" data-product-price="12490">Agregar al carrito</button>
+          </div>
         </article>
         <article class="inspiration-card">
           <img class="inspiration-photo" src="./assets/images/producto6.jpg" alt="Ambiente de recamara calida">
           <h3>Recamara Calida</h3>
+          <p>Set acogedor con cabecera tapizada y detalles contemporaneos.</p>
+          <div class="product-footer">
+            <div class="product-pricing">
+              <span class="product-price">$19,990</span>
+            </div>
+            <button type="button" class="btn btn-outline product-cart-btn" data-add-to-cart data-product-name="Recamara Calida" data-product-price="19990">Agregar al carrito</button>
+          </div>
         </article>
       </div>
     </section>
@@ -185,10 +310,346 @@
 
   <footer id="contact" class="site-footer">
     <div class="container footer-grid">
-      <p>Mi Espacio Ideal Muebleria</p>
-      <p>ventas@miespacioideal.com</p>
-      <p>Lun - Sab, 10:00 a 19:00</p>
+      <div class="footer-brand">
+        <h3>Mi Espacio Ideal</h3>
+        <p>
+          Muebles y decoracion para crear espacios funcionales, calidos y con estilo.
+        </p>
+      </div>
+      <div class="footer-column">
+        <h4>Enlaces Rapidos</h4>
+        <a href="#categories">Categorias</a>
+        <a href="#featured">Destacados</a>
+        <a href="#about">Nosotros</a>
+        <a href="#contact">Contacto</a>
+      </div>
+      <div class="footer-column">
+        <h4>Contacto</h4>
+        <p>ventas@miespacioideal.com</p>
+        <p>+52 55 1234 5678</p>
+        <p>Lun - Sab, 10:00 a 19:00</p>
+        <p>Ciudad de Mexico</p>
+      </div>
+      <div class="footer-column">
+        <h4>Promociones</h4>
+        <p>Recibe novedades, descuentos y nuevas colecciones.</p>
+        <form class="footer-form" action="#">
+          <input type="email" placeholder="Tu correo electronico" aria-label="Correo electronico">
+          <button type="submit" class="btn btn-primary">Suscribirme</button>
+        </form>
+      </div>
+    </div>
+    <div class="container payment-strip">
+      <p class="payment-label">Metodos de pago</p>
+      <div class="payment-methods">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3.5" y="6.2" width="17" height="11.6" rx="2.6" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M3.5 10.2H20.5" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+          Visa
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="10" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="14" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+          Mastercard
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4.3 9.5H19.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M7.3 6.5L4.3 9.5L7.3 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16.7 17.5L19.7 14.5L16.7 11.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M19.7 14.5H4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          Transferencia
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="4.2" y="5.1" width="15.6" height="14.7" rx="2.3" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M8 3.8V6.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M16 3.8V6.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M8 11.2H16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M8 15.2H13.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          Hasta 12 MSI
+        </span>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>2026 Mi Espacio Ideal Muebleria. Todos los derechos reservados.</p>
+      <div class="footer-social">
+        <a href="#">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3.8" y="3.8" width="16.4" height="16.4" rx="4.5" stroke="currentColor" stroke-width="1.7"/>
+            <circle cx="12" cy="12" r="3.8" stroke="currentColor" stroke-width="1.7"/>
+            <circle cx="17.3" cy="6.9" r="1.1" fill="currentColor"/>
+          </svg>
+          Instagram
+        </a>
+        <a href="#">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M13.2 20V12.8H15.9L16.3 9.9H13.2V8.05C13.2 7.2 13.48 6.6 14.7 6.6H16.4V4.02C16.11 3.98 15.1 3.9 13.93 3.9C11.49 3.9 9.82 5.35 9.82 8.02V9.9H7.3V12.8H9.82V20H13.2Z" fill="currentColor"/>
+          </svg>
+          Facebook
+        </a>
+        <a href="#">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 4.1C7.67 4.1 4.16 7.43 4.16 11.54C4.16 13.18 4.72 14.7 5.67 15.93L4.92 19.9L9.1 19.18C10.25 19.8 11.58 20.15 13 20.15C17.33 20.15 20.84 16.82 20.84 12.71C20.84 8.6 17.33 4.1 13 4.1H12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="M9.3 10.2C9.56 9.66 9.86 9.62 10.19 9.62C10.45 9.62 10.75 9.63 10.94 10.08C11.16 10.58 11.67 11.78 11.73 11.9C11.79 12.02 11.82 12.18 11.73 12.33C11.64 12.48 11.59 12.58 11.41 12.76C11.23 12.94 11.03 13.15 10.87 13.31C10.71 13.47 10.54 13.64 10.73 13.96C10.92 14.28 11.59 15.36 12.97 16C14.75 16.83 14.75 16.55 15.26 16.5C15.77 16.45 16.9 15.55 17.12 14.94C17.34 14.33 17.34 13.81 17.28 13.72C17.22 13.63 17.06 13.57 16.81 13.45C16.56 13.33 15.31 12.73 15.08 12.64C14.85 12.55 14.68 12.52 14.5 12.76C14.32 13 13.81 13.6 13.65 13.78C13.49 13.96 13.33 13.98 13.08 13.86C12.83 13.74 12.03 13.48 11.08 12.64C10.33 11.98 9.82 11.16 9.66 10.91C9.5 10.66 9.62 10.52 9.77 10.37C9.9 10.24 10.05 10.03 10.18 9.88" fill="currentColor"/>
+          </svg>
+          WhatsApp
+        </a>
+      </div>
     </div>
   </footer>
+  <aside class="cart-drawer" data-cart-drawer aria-hidden="true">
+    <div class="cart-drawer-header">
+      <h3>Tu carrito</h3>
+      <button type="button" class="cart-close" aria-label="Cerrar carrito" data-cart-close>×</button>
+    </div>
+    <div class="cart-items" data-cart-items>
+      <p class="cart-empty">Tu carrito esta vacio.</p>
+    </div>
+    <div class="cart-drawer-footer">
+      <p>Total de articulos: <strong data-cart-total>0</strong></p>
+      <a class="btn btn-primary cart-whatsapp-checkout" href="https://wa.me/525512345678?text=Hola,%20quiero%20informacion%20sobre%20mi%20carrito" target="_blank" rel="noreferrer">Finalizar por WhatsApp</a>
+    </div>
+  </aside>
+  <div class="cart-overlay" data-cart-overlay hidden></div>
+  <button type="button" class="scroll-top" aria-label="Volver arriba" data-scroll-top>
+    <svg viewBox="0 0 52 52" aria-hidden="true">
+      <circle class="scroll-top-track" cx="26" cy="26" r="22"></circle>
+      <circle class="scroll-top-progress" cx="26" cy="26" r="22"></circle>
+    </svg>
+    <span>↑</span>
+  </button>
+  <a class="whatsapp-float" href="https://wa.me/525512345678?text=Hola,%20quiero%20asesoria%20para%20elegir%20mis%20muebles" target="_blank" rel="noreferrer" aria-label="Escribenos por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 4.1C7.67 4.1 4.16 7.43 4.16 11.54C4.16 13.18 4.72 14.7 5.67 15.93L4.92 19.9L9.1 19.18C10.25 19.8 11.58 20.15 13 20.15C17.33 20.15 20.84 16.82 20.84 12.71C20.84 8.6 17.33 4.1 13 4.1H12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+      <path d="M9.3 10.2C9.56 9.66 9.86 9.62 10.19 9.62C10.45 9.62 10.75 9.63 10.94 10.08C11.16 10.58 11.67 11.78 11.73 11.9C11.79 12.02 11.82 12.18 11.73 12.33C11.64 12.48 11.59 12.58 11.41 12.76C11.23 12.94 11.03 13.15 10.87 13.31C10.71 13.47 10.54 13.64 10.73 13.96C10.92 14.28 11.59 15.36 12.97 16C14.75 16.83 14.75 16.55 15.26 16.5C15.77 16.45 16.9 15.55 17.12 14.94C17.34 14.33 17.34 13.81 17.28 13.72C17.22 13.63 17.06 13.57 16.81 13.45C16.56 13.33 15.31 12.73 15.08 12.64C14.85 12.55 14.68 12.52 14.5 12.76C14.32 13 13.81 13.6 13.65 13.78C13.49 13.96 13.33 13.98 13.08 13.86C12.83 13.74 12.03 13.48 11.08 12.64C10.33 11.98 9.82 11.16 9.66 10.91C9.5 10.66 9.62 10.52 9.77 10.37C9.9 10.24 10.05 10.03 10.18 9.88" fill="currentColor"/>
+    </svg>
+  </a>
+  <script>
+    (function () {
+      var carousel = document.querySelector("[data-hero-carousel]");
+      if (!carousel) return;
+
+      var slides = Array.from(carousel.querySelectorAll("[data-slide]"));
+      var indicators = Array.from(carousel.querySelectorAll("[data-hero-indicator]"));
+      var prev = carousel.querySelector("[data-hero-prev]");
+      var next = carousel.querySelector("[data-hero-next]");
+      var category = carousel.querySelector("[data-hero-category]");
+      var title = carousel.querySelector("[data-hero-title]");
+      var price = carousel.querySelector("[data-hero-price]");
+      var current = 0;
+      var timer;
+      var touchStartX = 0;
+
+      function render(index) {
+        current = (index + slides.length) % slides.length;
+        slides.forEach(function (slide, slideIndex) {
+          slide.classList.toggle("is-active", slideIndex === current);
+        });
+        indicators.forEach(function (indicator, indicatorIndex) {
+          indicator.classList.toggle("is-active", indicatorIndex === current);
+        });
+        category.textContent = slides[current].dataset.category;
+        title.textContent = slides[current].dataset.title;
+        price.textContent = slides[current].dataset.price;
+      }
+
+      function start() {
+        stop();
+        timer = window.setInterval(function () {
+          render(current + 1);
+        }, 5500);
+      }
+
+      function stop() {
+        if (timer) window.clearInterval(timer);
+      }
+
+      prev.addEventListener("click", function () {
+        render(current - 1);
+        start();
+      });
+
+      next.addEventListener("click", function () {
+        render(current + 1);
+        start();
+      });
+
+      indicators.forEach(function (indicator) {
+        indicator.addEventListener("click", function () {
+          render(Number(indicator.dataset.heroIndicator));
+          start();
+        });
+      });
+
+      carousel.addEventListener("mouseenter", stop);
+      carousel.addEventListener("mouseleave", start);
+      carousel.addEventListener("touchstart", function (event) {
+        touchStartX = event.changedTouches[0].clientX;
+      }, { passive: true });
+      carousel.addEventListener("touchend", function (event) {
+        var diff = event.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(diff) > 40) {
+          render(current + (diff < 0 ? 1 : -1));
+          start();
+        }
+      }, { passive: true });
+
+      render(0);
+      start();
+    }());
+
+    (function () {
+      var toggle = document.querySelector(".menu-toggle");
+      var panel = document.querySelector("#mobile-menu");
+      if (!toggle || !panel) return;
+
+      function closeMenu() {
+        toggle.setAttribute("aria-expanded", "false");
+        panel.classList.remove("is-open");
+      }
+
+      toggle.addEventListener("click", function () {
+        var isOpen = toggle.getAttribute("aria-expanded") === "true";
+        toggle.setAttribute("aria-expanded", String(!isOpen));
+        panel.classList.toggle("is-open", !isOpen);
+      });
+
+      panel.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", closeMenu);
+      });
+
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 980) closeMenu();
+      });
+    }());
+
+    (function () {
+      var storageKey = "mi-espacio-ideal-cart";
+      var countNode = document.querySelector("[data-cart-count]");
+      var totalNode = document.querySelector("[data-cart-total]");
+      var itemsNode = document.querySelector("[data-cart-items]");
+      var drawer = document.querySelector("[data-cart-drawer]");
+      var overlay = document.querySelector("[data-cart-overlay]");
+      var openButton = document.querySelector("[data-cart-toggle]");
+      var closeButton = document.querySelector("[data-cart-close]");
+      var addButtons = Array.from(document.querySelectorAll("[data-add-to-cart]"));
+
+      if (!countNode || !totalNode || !itemsNode || !drawer || !overlay || !openButton) return;
+
+      function getCart() {
+        try {
+          return JSON.parse(window.localStorage.getItem(storageKey)) || [];
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function saveCart(cart) {
+        window.localStorage.setItem(storageKey, JSON.stringify(cart));
+      }
+
+      function formatPrice(value) {
+        return new Intl.NumberFormat("es-MX", {
+          style: "currency",
+          currency: "MXN",
+          maximumFractionDigits: 0
+        }).format(value);
+      }
+
+      function renderCart() {
+        var cart = getCart();
+        var totalItems = cart.reduce(function (sum, item) {
+          return sum + item.quantity;
+        }, 0);
+
+        countNode.textContent = totalItems;
+        totalNode.textContent = totalItems;
+
+        if (!cart.length) {
+          itemsNode.innerHTML = '<p class="cart-empty">Tu carrito esta vacio.</p>';
+          return;
+        }
+
+        itemsNode.innerHTML = cart.map(function (item) {
+          return '<div class="cart-item">' +
+            '<div><h4>' + item.name + '</h4><p>' + formatPrice(item.price) + '</p></div>' +
+            '<span>x' + item.quantity + '</span>' +
+          '</div>';
+        }).join("");
+      }
+
+      function openCart() {
+        drawer.classList.add("is-open");
+        drawer.setAttribute("aria-hidden", "false");
+        overlay.hidden = false;
+      }
+
+      function closeCart() {
+        drawer.classList.remove("is-open");
+        drawer.setAttribute("aria-hidden", "true");
+        overlay.hidden = true;
+      }
+
+      addButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          var cart = getCart();
+          var name = button.dataset.productName;
+          var price = Number(button.dataset.productPrice);
+          var existing = cart.find(function (item) {
+            return item.name === name;
+          });
+
+          if (existing) {
+            existing.quantity += 1;
+          } else {
+            cart.push({ name: name, price: price, quantity: 1 });
+          }
+
+          saveCart(cart);
+          renderCart();
+          openCart();
+        });
+      });
+
+      openButton.addEventListener("click", openCart);
+      if (closeButton) closeButton.addEventListener("click", closeCart);
+      overlay.addEventListener("click", closeCart);
+
+      renderCart();
+    }());
+
+    (function () {
+      var button = document.querySelector("[data-scroll-top]");
+      var progress = document.querySelector(".scroll-top-progress");
+      if (!button || !progress) return;
+
+      var radius = 22;
+      var circumference = 2 * Math.PI * radius;
+      progress.style.strokeDasharray = String(circumference);
+      progress.style.strokeDashoffset = String(circumference);
+
+      function updateScrollButton() {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var ratio = docHeight > 0 ? scrollTop / docHeight : 0;
+        progress.style.strokeDashoffset = String(circumference - (circumference * ratio));
+        button.classList.toggle("is-visible", scrollTop > 260);
+      }
+
+      button.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      window.addEventListener("scroll", updateScrollButton, { passive: true });
+      updateScrollButton();
+    }());
+  </script>
 </body>
 </html>
