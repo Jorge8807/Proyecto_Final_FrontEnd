@@ -722,9 +722,18 @@ a {
 }
 
 .tile {
+  position: relative;
+  display: block;
   padding: 0.85rem;
   min-height: 170px;
   transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.tile-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 0.95rem;
 }
 
 .tile-visual {
@@ -734,7 +743,55 @@ a {
   object-fit: cover;
   border-radius: 12px;
   border: 1px solid var(--line);
-  margin-bottom: 0.95rem;
+  transition: transform 220ms ease;
+}
+
+.tile-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  background: linear-gradient(180deg, rgba(16, 16, 16, 0) 0%, rgba(16, 16, 16, 0.62) 100%);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.tile-badge,
+.product-badge,
+.inspiration-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.tile-badge {
+  background: rgba(16, 16, 16, 0.82);
+  color: #fff;
+}
+
+.tile-badge-new {
+  background: rgba(255, 90, 31, 0.96);
+}
+
+.tile-badge-popular {
+  background: rgba(16, 16, 16, 0.82);
+}
+
+.tile-badge-trend {
+  background: rgba(124, 119, 101, 0.96);
 }
 
 .tile:hover,
@@ -742,6 +799,15 @@ a {
 .inspiration-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 20px rgba(16, 16, 16, 0.07);
+}
+
+.tile:hover .tile-visual {
+  transform: scale(1.03);
+}
+
+.tile:hover .tile-overlay {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .tile h3,
@@ -757,6 +823,22 @@ a {
   line-height: 1.5;
 }
 
+.tile-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.tile-cta::after {
+  content: "↗";
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -764,6 +846,7 @@ a {
 }
 
 .product {
+  position: relative;
   padding: 1.35rem;
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
@@ -778,6 +861,11 @@ a {
   object-fit: cover;
 }
 
+.product-badge {
+  background: rgba(255, 90, 31, 0.96);
+  color: #fff;
+}
+
 .product span {
   display: block;
   margin-top: 1rem;
@@ -790,6 +878,14 @@ a {
   justify-content: space-between;
   gap: 0.75rem;
   margin-top: 1rem;
+}
+
+.product-actions,
+.offer-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.45rem;
 }
 
 .product-pricing {
@@ -818,6 +914,14 @@ a {
   background: #f7f7f5;
   font-size: 0.82rem;
   white-space: nowrap;
+}
+
+.product-whatsapp-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1f8f53;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
 }
 
 .product-cart-btn:hover {
@@ -937,6 +1041,23 @@ a {
   padding: 1.2rem;
 }
 
+.benefit-icon {
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 90, 31, 0.14) 0%, rgba(255, 90, 31, 0.06) 100%);
+  color: var(--accent);
+}
+
+.benefit-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
 .benefit h3 {
   font-size: 1rem;
   letter-spacing: -0.01em;
@@ -955,10 +1076,17 @@ a {
 }
 
 .inspiration-card {
+  position: relative;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
   padding: 0.85rem;
+}
+
+.inspiration-badge {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  border: 1px solid rgba(16, 16, 16, 0.08);
 }
 
 .inspiration-photo {
