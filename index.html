@@ -111,10 +111,10 @@
           </div>
           <div class="hero-controls">
             <button type="button" class="hero-control" data-hero-prev aria-label="Slide anterior">‹</button>
-            <div class="hero-indicators" aria-label="Indicadores de hero">
-              <button type="button" class="hero-indicator is-active" data-hero-indicator="0" aria-label="Ir al slide 1"></button>
-              <button type="button" class="hero-indicator" data-hero-indicator="1" aria-label="Ir al slide 2"></button>
-              <button type="button" class="hero-indicator" data-hero-indicator="2" aria-label="Ir al slide 3"></button>
+            <div class="hero-counter" aria-label="Contador de hero">
+              <span data-hero-current>01</span>
+              <span>/</span>
+              <span data-hero-total>03</span>
             </div>
             <button type="button" class="hero-control" data-hero-next aria-label="Siguiente slide">›</button>
           </div>
@@ -524,27 +524,32 @@
       if (!carousel) return;
 
       var slides = Array.from(carousel.querySelectorAll("[data-slide]"));
-      var indicators = Array.from(carousel.querySelectorAll("[data-hero-indicator]"));
       var prev = carousel.querySelector("[data-hero-prev]");
       var next = carousel.querySelector("[data-hero-next]");
       var category = carousel.querySelector("[data-hero-category]");
       var title = carousel.querySelector("[data-hero-title]");
       var price = carousel.querySelector("[data-hero-price]");
+      var currentNode = carousel.querySelector("[data-hero-current]");
+      var totalNode = carousel.querySelector("[data-hero-total]");
       var current = 0;
       var timer;
       var touchStartX = 0;
+
+      if (totalNode) {
+        totalNode.textContent = String(slides.length).padStart(2, "0");
+      }
 
       function render(index) {
         current = (index + slides.length) % slides.length;
         slides.forEach(function (slide, slideIndex) {
           slide.classList.toggle("is-active", slideIndex === current);
         });
-        indicators.forEach(function (indicator, indicatorIndex) {
-          indicator.classList.toggle("is-active", indicatorIndex === current);
-        });
         category.textContent = slides[current].dataset.category;
         title.textContent = slides[current].dataset.title;
         price.textContent = slides[current].dataset.price;
+        if (currentNode) {
+          currentNode.textContent = String(current + 1).padStart(2, "0");
+        }
       }
 
       function start() {
@@ -566,13 +571,6 @@
       next.addEventListener("click", function () {
         render(current + 1);
         start();
-      });
-
-      indicators.forEach(function (indicator) {
-        indicator.addEventListener("click", function () {
-          render(Number(indicator.dataset.heroIndicator));
-          start();
-        });
       });
 
       carousel.addEventListener("mouseenter", stop);
