@@ -494,6 +494,17 @@
   </aside>
   <div class="cart-overlay" data-cart-overlay hidden></div>
   <div class="cart-toast" data-cart-toast role="status" aria-live="polite" aria-atomic="true"></div>
+  <div class="exit-popup-overlay" data-exit-popup-overlay hidden></div>
+  <section class="exit-popup" data-exit-popup aria-hidden="true" aria-labelledby="exit-popup-title">
+    <button type="button" class="exit-popup-close" data-exit-popup-close aria-label="Cerrar ventana emergente">×</button>
+    <p class="exit-popup-kicker">Antes de irte...</p>
+    <h3 id="exit-popup-title">Aprovecha promociones de temporada y cotiza por WhatsApp.</h3>
+    <p class="exit-popup-copy">Aun puedes comprar con hasta 12 MSI o recibir asesoria personalizada para elegir tus muebles.</p>
+    <div class="exit-popup-actions">
+      <a href="#offers" class="btn btn-primary" data-exit-popup-link>Ver ofertas</a>
+      <a href="https://wa.me/525512345678?text=Hola,%20quiero%20cotizar%20muebles%20y%20recibir%20asesoria%20personalizada" class="btn btn-ghost" target="_blank" rel="noreferrer" data-exit-popup-link>Cotizar por WhatsApp</a>
+    </div>
+  </section>
   <button type="button" class="scroll-top" aria-label="Volver arriba" data-scroll-top>
     <svg viewBox="0 0 52 52" aria-hidden="true">
       <circle class="scroll-top-track" cx="26" cy="26" r="22"></circle>
@@ -791,6 +802,102 @@
 
       window.addEventListener("scroll", updateScrollButton, { passive: true });
       updateScrollButton();
+    }());
+
+    (function () {
+      var header = document.querySelector(".site-header");
+      var links = Array.from(document.querySelectorAll('.menu a[href^="#"], #mobile-menu a[href^="#"]'));
+      var sections = links.map(function (link) {
+        var id = link.getAttribute("href");
+        var section = document.querySelector(id);
+
+        if (!section) return null;
+
+        return {
+          id: id,
+          section: section
+        };
+      }).filter(Boolean).filter(function (entry, index, array) {
+        return array.findIndex(function (candidate) {
+          return candidate.id === entry.id;
+        }) === index;
+      });
+
+      if (!header || !links.length || !sections.length) return;
+
+      function setActiveLink(id) {
+        links.forEach(function (link) {
+          link.classList.toggle("is-active", link.getAttribute("href") === id);
+        });
+      }
+
+      function updateActiveSection() {
+        var headerOffset = header.offsetHeight + 18;
+        var scrollPosition = window.scrollY + headerOffset;
+        var currentId = sections[0].id;
+
+        sections.forEach(function (entry) {
+          if (entry.section.offsetTop <= scrollPosition) {
+            currentId = entry.id;
+          }
+        });
+
+        setActiveLink(currentId);
+      }
+
+      window.addEventListener("scroll", updateActiveSection, { passive: true });
+      window.addEventListener("resize", updateActiveSection);
+      updateActiveSection();
+    }());
+
+    (function () {
+      var popup = document.querySelector("[data-exit-popup]");
+      var overlay = document.querySelector("[data-exit-popup-overlay]");
+      var closeButton = document.querySelector("[data-exit-popup-close]");
+      var links = Array.from(document.querySelectorAll("[data-exit-popup-link]"));
+      var storageKey = "mi-espacio-ideal-exit-popup-shown";
+      var shown = false;
+
+      if (!popup || !overlay || !closeButton) return;
+
+      try {
+        shown = window.sessionStorage.getItem(storageKey) === "true";
+      } catch (error) {
+        shown = false;
+      }
+
+      function markShown() {
+        shown = true;
+        try {
+          window.sessionStorage.setItem(storageKey, "true");
+        } catch (error) {}
+      }
+
+      function openPopup() {
+        if (shown || window.innerWidth < 768) return;
+        popup.classList.add("is-visible");
+        popup.setAttribute("aria-hidden", "false");
+        overlay.hidden = false;
+        markShown();
+      }
+
+      function closePopup() {
+        popup.classList.remove("is-visible");
+        popup.setAttribute("aria-hidden", "true");
+        overlay.hidden = true;
+      }
+
+      document.addEventListener("mouseleave", function (event) {
+        if (shown) return;
+        if (event.clientY > 16) return;
+        openPopup();
+      });
+
+      closeButton.addEventListener("click", closePopup);
+      overlay.addEventListener("click", closePopup);
+      links.forEach(function (link) {
+        link.addEventListener("click", closePopup);
+      });
     }());
   </script>
 </body>
