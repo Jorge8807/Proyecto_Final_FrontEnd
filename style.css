@@ -856,6 +856,16 @@ a {
   display: none;
 }
 
+.hero-quote-link {
+  display: inline-flex;
+  margin-top: 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 .section {
   padding: 1.4rem 0 1.8rem;
 }
@@ -1822,6 +1832,11 @@ a {
 
   .hero-card small {
     display: none;
+  }
+
+  .hero-quote-link {
+    margin-top: 0.55rem;
+    font-size: 0.76rem;
   }
 
   .hero-counter {
