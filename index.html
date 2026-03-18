@@ -857,6 +857,7 @@
       var links = Array.from(document.querySelectorAll("[data-exit-popup-link]"));
       var storageKey = "mi-espacio-ideal-exit-popup-shown";
       var shown = false;
+      var canShow = false;
 
       if (!popup || !overlay || !closeButton) return;
 
@@ -874,7 +875,7 @@
       }
 
       function openPopup() {
-        if (shown || window.innerWidth < 768) return;
+        if (shown || !canShow || window.innerWidth < 768 || window.scrollY < 480) return;
         popup.classList.add("is-visible");
         popup.setAttribute("aria-hidden", "false");
         overlay.hidden = false;
@@ -889,9 +890,13 @@
 
       document.addEventListener("mouseleave", function (event) {
         if (shown) return;
-        if (event.clientY > 16) return;
+        if (event.clientY > 0) return;
         openPopup();
       });
+
+      window.setTimeout(function () {
+        canShow = true;
+      }, 20000);
 
       closeButton.addEventListener("click", closePopup);
       overlay.addEventListener("click", closePopup);
