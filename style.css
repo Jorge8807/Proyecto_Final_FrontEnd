@@ -1600,21 +1600,23 @@ a {
   }
 
   .hero-card {
-    left: 50%;
+    left: 1rem;
     right: auto;
-    width: min(78%, 280px);
+    width: min(84%, 320px);
     bottom: 0.8rem;
     padding: 0.65rem 0.8rem 0.7rem;
     background: rgba(255, 255, 255, 0.58);
     backdrop-filter: blur(10px);
     border-radius: 16px;
-    transform: translateX(-50%);
-    text-align: center;
+    transform: none;
+    text-align: left;
   }
 
   .hero-controls {
-    right: 0.9rem;
-    bottom: 5.8rem;
+    left: 1rem;
+    right: auto;
+    top: 1.18rem;
+    bottom: auto;
   }
 
   .products-grid,
@@ -1631,8 +1633,10 @@ a {
   }
 
   .hero-control {
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.5);
   }
 
   .hero-card p {
@@ -1674,8 +1678,9 @@ a {
   }
 
   .hero-counter {
-    padding: 0.34rem 0.52rem;
-    font-size: 0.76rem;
+    padding: 0.28rem 0.42rem;
+    font-size: 0.68rem;
+    background: rgba(255, 255, 255, 0.44);
   }
 
   .footer-grid {
