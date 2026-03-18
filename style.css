@@ -242,6 +242,11 @@ a {
   color: #8b8b8b;
 }
 
+.search.has-value {
+  border-color: rgba(255, 90, 31, 0.35);
+  box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.08);
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -855,6 +860,41 @@ a {
   padding: 1.4rem 0 1.8rem;
 }
 
+.search-feedback {
+  padding: 0 0 0.4rem;
+}
+
+.search-feedback-box {
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0) 34%),
+    linear-gradient(180deg, #f8f8f6 0%, #efefeb 100%);
+}
+
+.search-feedback-box h2 {
+  margin-top: 0.35rem;
+}
+
+.search-feedback-box p:last-of-type {
+  margin-top: 0.45rem;
+  color: var(--muted);
+}
+
+.search-feedback-box .btn {
+  margin-top: 1rem;
+}
+
+.search-mark {
+  padding: 0 0.15em;
+  border-radius: 0.3em;
+  background: rgba(255, 90, 31, 0.16);
+  color: inherit;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
 .section-head {
   display: flex;
   align-items: center;
@@ -1093,6 +1133,14 @@ a {
   text-underline-offset: 0.18em;
 }
 
+.product-quote-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 .product-cart-btn:hover {
   background: #101010;
   color: #fff;
@@ -1304,6 +1352,88 @@ a {
   line-height: 1.7;
 }
 
+.quote-section {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 1rem;
+  padding: 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0) 34%),
+    linear-gradient(180deg, #f8f8f6 0%, #efefeb 100%);
+}
+
+.quote-copy {
+  display: grid;
+  align-content: start;
+  gap: 0.8rem;
+}
+
+.quote-copy p:last-child {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.quote-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.quote-form label {
+  display: grid;
+  gap: 0.42rem;
+}
+
+.quote-form label span {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.quote-form input,
+.quote-form textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  font: inherit;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.quote-form textarea {
+  resize: vertical;
+  min-height: 132px;
+}
+
+.quote-form input:focus,
+.quote-form textarea:focus {
+  outline: 0;
+  border-color: rgba(255, 90, 31, 0.45);
+  box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.08);
+}
+
+.quote-form-actions {
+  display: grid;
+  gap: 0.6rem;
+  align-items: start;
+}
+
+.quote-form-note {
+  min-height: 1.2rem;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.quote-form-note.is-error {
+  color: #b23a1b;
+}
+
+.quote-form-note.is-success {
+  color: #1f8f53;
+}
+
 .site-footer {
   border-top: 1px solid var(--line);
   margin-top: 1.8rem;
@@ -1418,10 +1548,15 @@ a {
   gap: 1rem;
 }
 
-.footer-social a {
+.footer-social a,
+.footer-social-item {
   display: inline-flex;
   align-items: center;
   gap: 0.38rem;
+}
+
+.is-search-hidden {
+  display: none !important;
 }
 
 .footer-social svg {
@@ -1499,6 +1634,7 @@ a {
 
   .hero-grid,
   .about-grid,
+  .quote-section,
   .products-grid,
   .inspiration-grid,
   .footer-grid,
@@ -1558,10 +1694,21 @@ a {
     width: 42px;
     padding-inline: 0;
     justify-content: center;
+    cursor: pointer;
   }
 
   .search input {
     display: none;
+  }
+
+  .search.is-open {
+    width: min(72vw, 250px);
+    padding-inline: 0.75rem;
+    justify-content: flex-start;
+  }
+
+  .search.is-open input {
+    display: block;
   }
 
   .hero {

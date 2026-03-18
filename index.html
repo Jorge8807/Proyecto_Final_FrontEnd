@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
 </head>
-<body>
+<body id="top">
   <div class="promo-bar">
     <div class="container promo-bar-content">
       <p>Hasta 12 MSI + asesoría personalizada por WhatsApp en productos seleccionados.</p>
@@ -19,7 +19,7 @@
   </div>
   <header class="site-header">
     <div class="container nav">
-      <a href="#" class="logo" aria-label="Mi Espacio Ideal Mueblería">
+      <a href="#top" class="logo" aria-label="Mi Espacio Ideal Mueblería">
         <span class="logo-text">
           <span class="logo-main">Mi Espacio Ideal</span>
           <span class="logo-sub">Mueblería</span>
@@ -36,7 +36,7 @@
       <nav class="menu">
         <a href="#categories" class="is-active">Catálogos</a>
         <a href="#featured">Muebles</a>
-        <a href="#about">Recámaras</a>
+        <a href="#inspiration">Ambientes</a>
         <a href="#offers">Ofertas</a>
       </nav>
       <div class="nav-actions">
@@ -61,9 +61,9 @@
     <div class="container mobile-menu-panel" id="mobile-menu">
       <a href="#categories">Catálogos</a>
       <a href="#featured">Muebles</a>
-      <a href="#about">Recámaras</a>
+      <a href="#inspiration">Ambientes</a>
       <a href="#offers">Ofertas</a>
-      <a href="#contact" class="mobile-menu-link">Contacto</a>
+      <a href="#quote" class="mobile-menu-link">Contacto</a>
     </div>
   </header>
 
@@ -122,6 +122,15 @@
       </div>
     </section>
 
+    <section class="search-feedback" data-search-feedback hidden>
+      <div class="container search-feedback-box">
+        <p class="kicker">Búsqueda</p>
+        <h2 data-search-feedback-title>Sin resultados</h2>
+        <p data-search-feedback-copy>No encontramos coincidencias. Intenta con otro término.</p>
+        <button type="button" class="btn btn-ghost" data-search-clear>Limpiar búsqueda</button>
+      </div>
+    </section>
+
     <section id="categories" class="section">
       <div class="container">
         <div class="section-head">
@@ -167,7 +176,7 @@
       <div class="container">
         <div class="section-head">
           <h2>Productos Destacados</h2>
-          <a href="#" class="text-link">Ver todos</a>
+          <a href="#offers" class="text-link">Ver ofertas</a>
         </div>
         <div class="products-grid">
           <article class="product">
@@ -182,6 +191,7 @@
               <div class="product-actions">
                 <button type="button" class="btn btn-outline product-cart-btn" data-add-to-cart data-product-name="Set Home Office Niza" data-product-price="19360">Agregar al carrito</button>
                 <a class="product-whatsapp-link" href="https://wa.me/525512345678?text=Hola,%20quiero%20cotizar%20el%20producto%20Set%20Home%20Office%20Niza" target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
+                <a class="product-quote-link" href="#quote" data-quote-trigger data-quote-interest="Set Home Office Niza">Ir al formulario</a>
               </div>
             </div>
           </article>
@@ -197,6 +207,7 @@
               <div class="product-actions">
                 <button type="button" class="btn btn-outline product-cart-btn" data-add-to-cart data-product-name="Aparador Aura + Silla Accent" data-product-price="14100">Agregar al carrito</button>
                 <a class="product-whatsapp-link" href="https://wa.me/525512345678?text=Hola,%20quiero%20cotizar%20el%20producto%20Aparador%20Aura%20%2B%20Silla%20Accent" target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
+                <a class="product-quote-link" href="#quote" data-quote-trigger data-quote-interest="Aparador Aura + Silla Accent">Ir al formulario</a>
               </div>
             </div>
           </article>
@@ -212,6 +223,7 @@
               <div class="product-actions">
                 <button type="button" class="btn btn-outline product-cart-btn" data-add-to-cart data-product-name="Recámara Luna Queen" data-product-price="23160">Agregar al carrito</button>
                 <a class="product-whatsapp-link" href="https://wa.me/525512345678?text=Hola,%20quiero%20cotizar%20el%20producto%20Rec%C3%A1mara%20Luna%20Queen" target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
+                <a class="product-quote-link" href="#quote" data-quote-trigger data-quote-interest="Recámara Luna Queen">Ir al formulario</a>
               </div>
             </div>
           </article>
@@ -240,6 +252,7 @@
           <div class="offer-actions">
             <button type="button" class="btn btn-primary offer-btn" data-add-to-cart data-product-name="Set Home Office Niza Oferta" data-product-price="15490">Agregar al carrito</button>
             <a class="product-whatsapp-link" href="https://wa.me/525512345678?text=Hola,%20quiero%20cotizar%20la%20oferta%20Set%20Home%20Office%20Niza" target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
+            <a class="product-quote-link" href="#quote" data-quote-trigger data-quote-interest="Set Home Office Niza">Ir al formulario</a>
           </div>
         </article>
         <article class="offer-card">
@@ -254,6 +267,7 @@
           <div class="offer-actions">
             <button type="button" class="btn btn-primary offer-btn" data-add-to-cart data-product-name="Aparador Aura + Silla Accent Oferta" data-product-price="11990">Agregar al carrito</button>
             <a class="product-whatsapp-link" href="https://wa.me/525512345678?text=Hola,%20quiero%20cotizar%20la%20oferta%20Aparador%20Aura%20%2B%20Silla%20Accent" target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
+            <a class="product-quote-link" href="#quote" data-quote-trigger data-quote-interest="Aparador Aura + Silla Accent">Ir al formulario</a>
           </div>
         </article>
         <article class="offer-card">
@@ -268,12 +282,13 @@
           <div class="offer-actions">
             <button type="button" class="btn btn-primary offer-btn" data-add-to-cart data-product-name="Recámara Luna Queen Oferta" data-product-price="18990">Agregar al carrito</button>
             <a class="product-whatsapp-link" href="https://wa.me/525512345678?text=Hola,%20quiero%20cotizar%20la%20oferta%20Rec%C3%A1mara%20Luna%20Queen" target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
+            <a class="product-quote-link" href="#quote" data-quote-trigger data-quote-interest="Recámara Luna Queen">Ir al formulario</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="inspiration" class="section">
+    <section id="benefits" class="section">
       <div class="container benefits-grid">
         <article class="benefit">
           <span class="benefit-icon" aria-hidden="true">
@@ -316,10 +331,10 @@
       </div>
     </section>
 
-    <section class="section">
+    <section id="inspiration" class="section">
       <div class="container section-head">
         <h2>Inspira Tu Espacio</h2>
-        <a href="#" class="text-link">Ver ambientes</a>
+        <a href="#inspiration" class="text-link">Ver ambientes</a>
       </div>
       <div class="container inspiration-grid">
         <article class="inspiration-card">
@@ -333,7 +348,8 @@
               </div>
               <div class="product-actions">
                 <button type="button" class="btn btn-outline product-cart-btn" data-add-to-cart data-product-name="Sala Contemporánea" data-product-price="14990">Agregar al carrito</button>
-                <a class="product-whatsapp-link" href="https://wa.me/525512345678?text=Hola,%20quiero%20cotizar%20el%20ambiente%20Sala%20Contempor%C3%A1nea" target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
+	                <a class="product-whatsapp-link" href="https://wa.me/525512345678?text=Hola,%20quiero%20cotizar%20el%20ambiente%20Sala%20Contempor%C3%A1nea" target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
+	                <a class="product-quote-link" href="#quote" data-quote-trigger data-quote-interest="Sala Contemporánea">Ir al formulario</a>
               </div>
             </div>
           </article>
@@ -348,7 +364,8 @@
               </div>
               <div class="product-actions">
                 <button type="button" class="btn btn-outline product-cart-btn" data-add-to-cart data-product-name="Rincón Minimalista" data-product-price="12490">Agregar al carrito</button>
-                <a class="product-whatsapp-link" href="https://wa.me/525512345678?text=Hola,%20quiero%20cotizar%20el%20ambiente%20Rinc%C3%B3n%20Minimalista" target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
+	                <a class="product-whatsapp-link" href="https://wa.me/525512345678?text=Hola,%20quiero%20cotizar%20el%20ambiente%20Rinc%C3%B3n%20Minimalista" target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
+	                <a class="product-quote-link" href="#quote" data-quote-trigger data-quote-interest="Rincón Minimalista">Ir al formulario</a>
               </div>
             </div>
           </article>
@@ -363,7 +380,8 @@
               </div>
               <div class="product-actions">
                 <button type="button" class="btn btn-outline product-cart-btn" data-add-to-cart data-product-name="Sala Cálida" data-product-price="19990">Agregar al carrito</button>
-                <a class="product-whatsapp-link" href="https://wa.me/525512345678?text=Hola,%20quiero%20cotizar%20el%20ambiente%20Sala%20C%C3%A1lida" target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
+	                <a class="product-whatsapp-link" href="https://wa.me/525512345678?text=Hola,%20quiero%20cotizar%20el%20ambiente%20Sala%20C%C3%A1lida" target="_blank" rel="noreferrer">Cotizar por WhatsApp</a>
+	                <a class="product-quote-link" href="#quote" data-quote-trigger data-quote-interest="Sala Cálida">Ir al formulario</a>
               </div>
             </div>
           </article>
@@ -378,6 +396,41 @@
           Seleccionamos piezas con diseño actual, materiales duraderos y excelente relación calidad-precio.
           Te acompañamos desde la elección hasta la entrega.
         </p>
+      </div>
+    </section>
+
+    <section id="quote" class="section">
+      <div class="container quote-section">
+        <div class="quote-copy">
+          <p class="kicker">Solicita Tu Cotización</p>
+          <h2>Cuéntanos qué espacio quieres renovar y te atendemos por WhatsApp.</h2>
+          <p>
+            Comparte tu nombre, medio de contacto, producto o ambiente de interés y algunos detalles.
+            Te ayudamos a elegir la mejor opción para tu espacio.
+          </p>
+        </div>
+        <form class="quote-form" data-quote-form novalidate>
+          <label>
+            <span>Nombre</span>
+            <input type="text" name="name" placeholder="Tu nombre" required>
+          </label>
+          <label>
+            <span>WhatsApp</span>
+            <input type="tel" name="phone" placeholder="55 1234 5678" required>
+          </label>
+          <label>
+            <span>Producto o ambiente</span>
+            <input type="text" name="interest" placeholder="Ej. Sala Cálida o Recámara Luna Queen" required>
+          </label>
+          <label>
+            <span>Mensaje</span>
+            <textarea name="message" rows="5" placeholder="Cuéntanos medidas, estilo, presupuesto o cualquier detalle útil." required></textarea>
+          </label>
+          <div class="quote-form-actions">
+            <button type="submit" class="btn btn-primary">Enviar por WhatsApp</button>
+            <p class="quote-form-note" data-quote-form-note aria-live="polite"></p>
+          </div>
+        </form>
       </div>
     </section>
   </main>
@@ -454,21 +507,21 @@
     <div class="container footer-bottom">
       <p>2026 Mi Espacio Ideal Mueblería. Todos los derechos reservados.</p>
       <div class="footer-social">
-        <a href="#">
+        <span class="footer-social-item">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <rect x="3.8" y="3.8" width="16.4" height="16.4" rx="4.5" stroke="currentColor" stroke-width="1.7"/>
             <circle cx="12" cy="12" r="3.8" stroke="currentColor" stroke-width="1.7"/>
             <circle cx="17.3" cy="6.9" r="1.1" fill="currentColor"/>
           </svg>
           Instagram
-        </a>
-        <a href="#">
+        </span>
+        <span class="footer-social-item">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M13.2 20V12.8H15.9L16.3 9.9H13.2V8.05C13.2 7.2 13.48 6.6 14.7 6.6H16.4V4.02C16.11 3.98 15.1 3.9 13.93 3.9C11.49 3.9 9.82 5.35 9.82 8.02V9.9H7.3V12.8H9.82V20H13.2Z" fill="currentColor"/>
           </svg>
           Facebook
-        </a>
-        <a href="#">
+        </span>
+        <a href="https://wa.me/525512345678?text=Hola,%20quiero%20comunicarme%20con%20Mi%20Espacio%20Ideal" target="_blank" rel="noreferrer">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M12 4.1C7.67 4.1 4.16 7.43 4.16 11.54C4.16 13.18 4.72 14.7 5.67 15.93L4.92 19.9L9.1 19.18C10.25 19.8 11.58 20.15 13 20.15C17.33 20.15 20.84 16.82 20.84 12.71C20.84 8.6 17.33 4.1 13 4.1H12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
             <path d="M9.3 10.2C9.56 9.66 9.86 9.62 10.19 9.62C10.45 9.62 10.75 9.63 10.94 10.08C11.16 10.58 11.67 11.78 11.73 11.9C11.79 12.02 11.82 12.18 11.73 12.33C11.64 12.48 11.59 12.58 11.41 12.76C11.23 12.94 11.03 13.15 10.87 13.31C10.71 13.47 10.54 13.64 10.73 13.96C10.92 14.28 11.59 15.36 12.97 16C14.75 16.83 14.75 16.55 15.26 16.5C15.77 16.45 16.9 15.55 17.12 14.94C17.34 14.33 17.34 13.81 17.28 13.72C17.22 13.63 17.06 13.57 16.81 13.45C16.56 13.33 15.31 12.73 15.08 12.64C14.85 12.55 14.68 12.52 14.5 12.76C14.32 13 13.81 13.6 13.65 13.78C13.49 13.96 13.33 13.98 13.08 13.86C12.83 13.74 12.03 13.48 11.08 12.64C10.33 11.98 9.82 11.16 9.66 10.91C9.5 10.66 9.62 10.52 9.77 10.37C9.9 10.24 10.05 10.03 10.18 9.88" fill="currentColor"/>
@@ -613,6 +666,277 @@
       window.addEventListener("resize", function () {
         if (window.innerWidth > 980) closeMenu();
       });
+    }());
+
+    (function () {
+      var form = document.querySelector(".search");
+      var input = form ? form.querySelector('input[type="search"]') : null;
+      var feedback = document.querySelector("[data-search-feedback]");
+      var feedbackTitle = document.querySelector("[data-search-feedback-title]");
+      var feedbackCopy = document.querySelector("[data-search-feedback-copy]");
+      var clearButton = document.querySelector("[data-search-clear]");
+      var activeQuery = "";
+      var latestMatchCount = 0;
+      var latestFirstMatch = null;
+      var groups;
+
+      if (!form || !input) return;
+
+      groups = [
+        {
+          section: document.querySelector(".hero"),
+          items: Array.from(document.querySelectorAll(".hero-grid")),
+          highlightRoots: function (item) {
+            return Array.from(item.querySelectorAll(".hero-copy, .hero-card"));
+          }
+        },
+        {
+          section: document.querySelector("#categories"),
+          items: Array.from(document.querySelectorAll("#categories .tile"))
+        },
+        {
+          section: document.querySelector("#featured"),
+          items: Array.from(document.querySelectorAll("#featured .product"))
+        },
+        {
+          section: document.querySelector("#offers"),
+          items: Array.from(document.querySelectorAll("#offers .offer-card"))
+        },
+        {
+          section: document.querySelector("#benefits"),
+          items: Array.from(document.querySelectorAll("#benefits .benefit"))
+        },
+        {
+          section: document.querySelector("#inspiration"),
+          items: Array.from(document.querySelectorAll("#inspiration .inspiration-card"))
+        }
+      ];
+
+      function normalize(text) {
+        return (text || "")
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+      }
+
+      function updateFeedback(query, matchCount) {
+        if (!feedback || !feedbackTitle || !feedbackCopy) return;
+
+        if (!query || matchCount > 0) {
+          feedback.hidden = true;
+          return;
+        }
+
+        feedbackTitle.textContent = "Sin resultados";
+        feedbackCopy.textContent = 'No encontramos coincidencias para "' + input.value.trim() + '". Intenta con otro término.';
+        feedback.hidden = false;
+      }
+
+      function getSearchText(item) {
+        var altText = Array.from(item.querySelectorAll("img[alt]")).map(function (image) {
+          return image.getAttribute("alt") || "";
+        }).join(" ");
+
+        return item.textContent + " " + altText;
+      }
+
+      function clearHighlights(root) {
+        if (!root) return;
+
+        root.querySelectorAll("mark.search-mark").forEach(function (mark) {
+          var textNode = document.createTextNode(mark.textContent);
+          mark.replaceWith(textNode);
+          if (textNode.parentNode) textNode.parentNode.normalize();
+        });
+      }
+
+      function escapeRegExp(text) {
+        return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      }
+
+      function getHighlightRanges(text, query) {
+        var normalizedChars = [];
+        var indexMap = [];
+        var normalizedText;
+        var ranges = [];
+        var startIndex = 0;
+        var matchIndex;
+
+        for (var i = 0; i < text.length; i += 1) {
+          var normalizedChar = normalize(text.charAt(i));
+
+          for (var j = 0; j < normalizedChar.length; j += 1) {
+            normalizedChars.push(normalizedChar.charAt(j));
+            indexMap.push(i);
+          }
+        }
+
+        normalizedText = normalizedChars.join("");
+
+        while (query && (matchIndex = normalizedText.indexOf(query, startIndex)) !== -1) {
+          var originalStart = indexMap[matchIndex];
+          var originalEnd = indexMap[matchIndex + query.length - 1] + 1;
+
+          ranges.push([originalStart, originalEnd]);
+          startIndex = matchIndex + query.length;
+        }
+
+        return ranges;
+      }
+
+      function highlightTextNode(node, query) {
+        var text = node.textContent;
+        var ranges = getHighlightRanges(text, query);
+        var fragment;
+        var lastIndex = 0;
+
+        if (!ranges.length) return;
+
+        fragment = document.createDocumentFragment();
+
+        ranges.forEach(function (range) {
+          if (range[0] > lastIndex) {
+            fragment.appendChild(document.createTextNode(text.slice(lastIndex, range[0])));
+          }
+
+          var mark = document.createElement("mark");
+          mark.className = "search-mark";
+          mark.textContent = text.slice(range[0], range[1]);
+          fragment.appendChild(mark);
+          lastIndex = range[1];
+        });
+
+        if (lastIndex < text.length) {
+          fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+        }
+
+        node.parentNode.replaceChild(fragment, node);
+      }
+
+      function highlightMatches(root, query) {
+        var walker;
+        var textNodes = [];
+
+        if (!root || !query) return;
+
+        walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+          acceptNode: function (node) {
+            var parent = node.parentNode;
+
+            if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+            if (!parent) return NodeFilter.FILTER_REJECT;
+            if (parent.closest("script, style, mark.search-mark")) return NodeFilter.FILTER_REJECT;
+
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        });
+
+        while (walker.nextNode()) {
+          textNodes.push(walker.currentNode);
+        }
+
+        textNodes.forEach(function (node) {
+          highlightTextNode(node, query);
+        });
+      }
+
+      function updateSearch() {
+        var query = normalize(input.value.trim());
+        var matchCount = 0;
+        var firstMatch = null;
+
+        activeQuery = query;
+
+        groups.forEach(function (group) {
+          var visibleItems = 0;
+
+          group.items.forEach(function (item) {
+            var haystack = normalize(getSearchText(item));
+            var isMatch = !query || haystack.indexOf(query) !== -1;
+            var highlightRoots = typeof group.highlightRoots === "function" ? group.highlightRoots(item) : [item];
+
+            item.hidden = !isMatch;
+            item.classList.toggle("is-search-hidden", !isMatch);
+
+            highlightRoots.forEach(function (root) {
+              clearHighlights(root);
+            });
+
+            if (isMatch) {
+              visibleItems += 1;
+              matchCount += 1;
+
+              highlightRoots.forEach(function (root) {
+                highlightMatches(root, query);
+              });
+
+              if (!firstMatch) firstMatch = item;
+            }
+          });
+
+          if (group.section) {
+            group.section.hidden = !!query && visibleItems === 0;
+          }
+        });
+
+        latestMatchCount = matchCount;
+        latestFirstMatch = firstMatch;
+
+        form.classList.toggle("has-value", !!query);
+        updateFeedback(query, matchCount);
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (window.innerWidth <= 700 && !form.classList.contains("is-open")) {
+          form.classList.add("is-open");
+          input.focus();
+          return;
+        }
+
+        updateSearch();
+
+        if (!activeQuery) return;
+
+        if (latestFirstMatch) {
+          latestFirstMatch.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else if (feedback && !feedback.hidden) {
+          feedback.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+
+      input.addEventListener("input", updateSearch);
+
+      form.addEventListener("click", function () {
+        if (window.innerWidth <= 700) {
+          form.classList.add("is-open");
+          input.focus();
+        }
+      });
+
+      input.addEventListener("blur", function () {
+        if (window.innerWidth <= 700 && !input.value.trim()) {
+          form.classList.remove("is-open");
+        }
+      });
+
+      document.addEventListener("click", function (event) {
+        if (window.innerWidth <= 700 && !form.contains(event.target) && !input.value.trim()) {
+          form.classList.remove("is-open");
+        }
+      });
+
+      if (clearButton) {
+        clearButton.addEventListener("click", function () {
+          input.value = "";
+          form.classList.remove("has-value", "is-open");
+          updateSearch();
+          input.focus();
+        });
+      }
+
+      updateSearch();
     }());
 
     (function () {
@@ -900,6 +1224,63 @@
       overlay.addEventListener("click", closePopup);
       links.forEach(function (link) {
         link.addEventListener("click", closePopup);
+      });
+    }());
+
+    (function () {
+      var form = document.querySelector("[data-quote-form]");
+      var note = document.querySelector("[data-quote-form-note]");
+      var interestInput = form ? form.elements.interest : null;
+      var quoteTriggers = Array.from(document.querySelectorAll("[data-quote-trigger]"));
+      var whatsappBase = "https://wa.me/525512345678?text=";
+
+      if (!form || !note || !interestInput) return;
+
+      function setNote(message, isError) {
+        note.textContent = message;
+        note.classList.toggle("is-error", !!isError);
+        note.classList.toggle("is-success", !isError && !!message);
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var name = form.elements.name.value.trim();
+        var phone = form.elements.phone.value.trim();
+        var interest = form.elements.interest.value.trim();
+        var message = form.elements.message.value.trim();
+
+        if (!name || !phone || !interest || !message) {
+          setNote("Completa todos los campos antes de enviar.", true);
+          return;
+        }
+
+        setNote("");
+
+        var whatsappMessage = [
+          "Hola, quiero solicitar una cotización.",
+          "",
+          "Nombre: " + name,
+          "WhatsApp: " + phone,
+          "Producto o ambiente: " + interest,
+          "Detalles: " + message
+        ].join("\n");
+
+        window.open(whatsappBase + encodeURIComponent(whatsappMessage), "_blank", "noopener,noreferrer");
+        setNote("Abriendo WhatsApp con tu solicitud.", false);
+        form.reset();
+      });
+
+      quoteTriggers.forEach(function (trigger) {
+        trigger.addEventListener("click", function () {
+          var interest = trigger.getAttribute("data-quote-interest") || "";
+
+          interestInput.value = interest;
+          window.setTimeout(function () {
+            interestInput.focus();
+            interestInput.select();
+          }, 180);
+        });
       });
     }());
   </script>
